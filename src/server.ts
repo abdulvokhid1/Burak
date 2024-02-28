@@ -1,4 +1,5 @@
-console.log("executed")
+import dotenv from "dotenv";
+dotenv.config();
 
-const person:string = "Ali";
-const age: number = 25;
+console.log("PORT:", process.env.PORT)
+console.log("MONGO_URL:", process.env.MONGO_URL)
