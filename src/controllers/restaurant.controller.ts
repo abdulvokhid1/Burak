@@ -27,6 +27,25 @@ restaurantController.getSignup = (req:Request, res:Response)=>{
     } catch(err){
         console.log("ERROR, getSignup", err)
     }
+    
+};
+
+restaurantController.processLogin = (req:Request, res:Response)=>{
+    try{
+        res.send("Done!")
+    } catch(err){
+        console.log("ERROR, processLogin", err)
+    }
+    
+};
+
+restaurantController.processSignup = (req:Request, res:Response)=>{
+    try{
+        res.send("Done!")
+    } catch(err){
+        console.log("ERROR, processSignup", err)
+    }
+    
 };
 
 export default restaurantController;
