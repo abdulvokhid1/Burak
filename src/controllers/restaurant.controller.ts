@@ -6,6 +6,7 @@ const restaurantController: T = {};
 
 restaurantController.goHome = (req:Request, res:Response)=>{
     try{
+        console.log("goHome")
         res.send("Home Page")
     } catch(err){
         console.log("ERROR, goHome", err)
