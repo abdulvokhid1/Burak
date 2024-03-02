@@ -28,3 +28,5 @@ constructor(statusCode:HttpCode, statusMessage: Message){
 
 }
 }
+
+export default Erros;

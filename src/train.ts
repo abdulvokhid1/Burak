@@ -14,3 +14,22 @@ function getPositive(arr: number[]) {
   return result;
 }
 console.log(getPositive([1, -4, 2]));
+
+/*
+Project Standarts:
+-Logging Standarts
+-Naming Standarts :
+  function, method, variable => CAMEL;
+  class => PASCAL;
+  folder, file => KEBAB;
+  css => SNAKE;
+-Error Handling
+
+*/
+ 
+/* API => Application Programming Interface:
+
+Traditional Api
+Rest Api
+GrapQL Api
+*/
