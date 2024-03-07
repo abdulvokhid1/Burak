@@ -15,6 +15,8 @@ export enum Message {
     NO_DATA_FOUND = "No data found!",
     CREATE_FAILED = "Create is failed",
     UPDATE_FAILED = "Update is failed",
+    WRONG_PASSWORD= "Please try again",
+    NO_MEMBER_NICK = "No member with this name",
 }
 
 class Erros extends Error {

@@ -6,7 +6,7 @@ export interface Member{
     memberType: MemberType;
     memberStatus: MemberStatus;
     memberNick: string;
-    memberPhone:string;
+    memberPhone:string; 
     memberPassword?:string;
     memberAddress?:string;
     memberDesk?:string;
@@ -29,4 +29,9 @@ export interface MemberInput{
     memberImage?:string;
     memberPoints?:number;
 
+}
+
+export interface LoginInput{
+    memberNick:string;
+    memberPassword:string;
 }

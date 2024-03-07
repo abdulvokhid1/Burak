@@ -24,7 +24,7 @@ Project Standarts:
   folder, file => KEBAB;
   css => SNAKE;
 -Error Handling
-
+    
 */
  
 /* API => Application Programming Interface:
@@ -33,3 +33,15 @@ Traditional Api
 Rest Api
 GrapQL Api
 */
+
+
+/* I-TASK: 
+
+Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
+MASALAN: getDigits("m14i1t") return qiladi "141" */
+
+
+function getDigits(){
+
+}
+getDigits() 
