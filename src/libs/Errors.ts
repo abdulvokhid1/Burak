@@ -15,6 +15,7 @@ export enum Message {
     NO_DATA_FOUND = "No data found!",
     CREATE_FAILED = "Create is failed",
     UPDATE_FAILED = "Update is failed",
+    USED_NICK_PHONE = "You are inserting already used phone or nick!",
     WRONG_PASSWORD= "Please try again",
     NO_MEMBER_NICK = "No member with this name",
 }
@@ -22,6 +23,11 @@ export enum Message {
 class Erros extends Error {
 public code: HttpCode;
 public  message: Message;
+
+static standard = {
+    code:HttpCode.INTERNAL_SERVER_ERROR,
+    message:Message.SOMETHING_WENT_WRONG,
+}
 
 constructor(statusCode:HttpCode, statusMessage: Message){
     super();
