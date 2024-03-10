@@ -36,7 +36,6 @@ restaurantController.getLogin = (req:Request, res:Response)=>{
 restaurantController.processSignup = async (req:Request, res:Response)=>{
     try{
         console.log("processSignup");
-        console.log("body:", req.body);
 
         const newMember:MemberInput = req.body;
         newMember.memberType = MemberType.RESTAURANT;
@@ -54,7 +53,7 @@ restaurantController.processSignup = async (req:Request, res:Response)=>{
 restaurantController.processLogin = async(req:Request, res:Response)=>{
     try{
         console.log("processLogin");
-        console.log("body:",req.body);
+
         const input:LoginInput = req.body;
         const result = await memberService.processLogin(input);
         //TODO: SESSIONS AUTHENTICATION
@@ -62,6 +61,7 @@ restaurantController.processLogin = async(req:Request, res:Response)=>{
         res.send(result)
     } catch(err){
         console.log("ERROR, processLogin", err)
+        res.send(err)
     }
     
 };
