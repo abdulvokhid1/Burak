@@ -1,31 +1,15 @@
-// I-TASK:
 
-function getDigits(str: string) {
-  let digits: string = "";
+
+// K-TASK:
+
+function countVowels(str: string): number {
+  let vowels = ["a", "e", "i", "o", "u"];
+  let count = 0;
+
   for (let i = 0; i < str.length; i++) {
-    if (!isNaN(parseInt(str[i]))) {
-      digits += str[i];
-    }
+    if (vowels.includes(str[i])) count++;
   }
-  return digits;
+  return count;
 }
-console.log(getDigits("m14i1t"));
 
-
-// J-TASK:
-
-function findLongestWord(input: string) {
-  let words: string[] = input.split(" ");
-
-  let longWord: string = "";
-  let maxLength: number = 0;
-
-  for (let word of words) {
-    if (word.length > maxLength) {
-      longWord = word;
-      maxLength = word.length;
-    }
-  }
-  return longWord;
-}
-console.log(findLongestWord("I come from Uzbekistan"));
+console.log(countVowels("string"));
