@@ -1,15 +1,14 @@
 
+// L-TASK:
 
-// K-TASK:
 
-function countVowels(str: string): number {
-  let vowels = ["a", "e", "i", "o", "u"];
-  let count = 0;
 
-  for (let i = 0; i < str.length; i++) {
-    if (vowels.includes(str[i])) count++;
-  }
-  return count;
+function reverseValue(input: string): string {
+  const words: string[] = input.split(' ');
+
+  const reversedWords: string[] = words.map(word => {
+      return word.split('').reverse().join('');
+  });
+  return reversedWords.join(' ');
 }
-
-console.log(countVowels("string"));
+console.log(reverseValue("we like coding!")); 
