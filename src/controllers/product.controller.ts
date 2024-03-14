@@ -11,7 +11,7 @@ productController.getAllProducts = async (req:Request, res:Response)=>{
         console.log("getAllProducts");
         res.render("products")
     } catch(err){
-        console.log("ERROR, signup", err);
+        console.log("ERROR, getAllProducts", err);
         if( err instanceof Erros) res.status(err.code).json(err);
         else res.status(Erros.standard.code).json(Erros.standard )
         // res.json({})
@@ -24,7 +24,7 @@ productController.createNewProduct = async (req:Request, res:Response)=>{
         console.log("createNewProduct");
         res.send("Done")
     } catch(err){
-        console.log("ERROR, signup", err);
+        console.log("ERROR, createNewProduct", err);
         if( err instanceof Erros) res.status(err.code).json(err);
         else res.status(Erros.standard.code).json(Erros.standard )
         // res.json({})   
@@ -36,7 +36,7 @@ productController.updateChosenProduct = async (req:Request, res:Response)=>{
 
         console.log("updateChosenProduct")
     } catch(err){
-        console.log("ERROR, signup", err);
+        console.log("ERROR, updateChosenProduct", err);
         if( err instanceof Erros) res.status(err.code).json(err);
         else res.status(Erros.standard.code).json(Erros.standard )
         // res.json({}) 
