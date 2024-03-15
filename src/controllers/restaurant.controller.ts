@@ -81,7 +81,7 @@ restaurantController.processLogin = async(req:AdminRequest, res:Response)=>{
         });
 
     } catch(err){
-        console.log("ERROR, processLogin", err)
+        console.log("ERROR, processLogin", err);
         const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
