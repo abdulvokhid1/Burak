@@ -13,6 +13,15 @@ private readonly productModel;
 
 
     /** SSR */
+    public async getAllProducts(): Promise<Product[]>{
+        const result = await this.productModel.find().exec();
+        if(!result) throw new Erros(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+
+         return result;
+
+    }
+
+
     public async createNewProduct(input: ProductInput): Promise<Product>{
         try{
             return await this.productModel.create(input);
