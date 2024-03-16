@@ -1,14 +1,10 @@
+// M-TASK:
 
-// L-TASK:
-
-
-
-function reverseValue(input: string): string {
-  const words: string[] = input.split(' ');
-
-  const reversedWords: string[] = words.map(word => {
-      return word.split('').reverse().join('');
+function getSquareNumbers(numbers: number[]) {
+  return numbers.map((number) => {
+    const square = number ** 2;
+    return { number, square };
   });
-  return reversedWords.join(' ');
 }
-console.log(reverseValue("we like coding!")); 
+
+console.log(getSquareNumbers([1, 2, 3]));
