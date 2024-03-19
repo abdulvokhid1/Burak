@@ -4,6 +4,7 @@ import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import Errors, { HttpCode, Message } from "../libs/Errors";
+import Erros from "../libs/Errors";
 
 const memberService = new MemberService();
 
@@ -118,11 +119,16 @@ restaurantController.getUsers = async (req:Request, res:Response)=>{
     }
 };
 
-restaurantController.updateChosenUser = (req:Request, res:Response)=>{
+restaurantController.updateChosenUser = async (req:Request, res:Response)=>{
     try{
-        res.render("updateChosenUser")
+        console.log("updateChosenUser")
+        const result = await  memberService.updateChosenUser(req.body);
+
+        res.status(HttpCode.OK).json({ data: result })
     } catch(err){
         console.log("ERROR, updateChosenUser", err);
+        if( err instanceof Erros) res.status(err.code).json(err);
+        else res.status(Erros.standard.code).json(Erros.standard )
     }
 };
 
