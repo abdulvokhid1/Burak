@@ -1,11 +1,13 @@
-// N-TASK:
+// TASK-O
 
-function palindromCheck(str: string) {
-  const result = str.split("").reverse().join("");
-  return result === str ? true : false;
+function calculateSumOfNumbers(arr: any[]): number {
+  return arr.reduce((ele, num) => {
+    if (typeof num === "number") return ele + num;
+    else return ele;
+  }, 0);
 }
-console.log(palindromCheck("dad"));
-console.log(palindromCheck("son"));
+
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
 
 /* Project Standards:
   - Logging standards
