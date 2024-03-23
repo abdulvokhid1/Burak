@@ -1,13 +1,25 @@
-// TASK-O
 
-function calculateSumOfNumbers(arr: any[]): number {
-  return arr.reduce((ele, num) => {
-    if (typeof num === "number") return ele + num;
-    else return ele;
-  }, 0);
+/** P-TASK:
+
+Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
+MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]*/
+
+
+function objectToArray(obj: Record<string, any>): [string, any][] {
+  const result: [string, any][] = [];
+  for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+          result.push([key, obj[key]]);
+      }
+  }
+  return result;
 }
 
-console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
+console.log(objectToArray({a: 10, b: 20}));
+
+
+
+
 
 /* Project Standards:
   - Logging standards
