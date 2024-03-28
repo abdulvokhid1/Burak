@@ -14,7 +14,17 @@ function hasProperty(a: { [key: string]: any }, b: string) {
 console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
 
 
+// TASK-R
 
+function calculate(str: string): number {
+  const numbers = str.split("+");
+
+  const result = numbers.reduce((acc, num) => acc + parseInt(num), 0);
+
+  return result;
+}
+
+console.log(calculate("1+3"));
 
 
 
