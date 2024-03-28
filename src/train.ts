@@ -1,21 +1,18 @@
-
-/** P-TASK:
-
-Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
-MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]*/
+// TASK-Q
 
 
-function objectToArray(obj: Record<string, any>): [string, any][] {
-  const result: [string, any][] = [];
-  for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-          result.push([key, obj[key]]);
-      }
+
+function hasProperty(a: { [key: string]: any }, b: string) {
+  for (let key in a) {
+    if (key === b) {
+      return true;
+    }
   }
-  return result;
-}
+  return false;
+} 
 
-console.log(objectToArray({a: 10, b: 20}));
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
+
 
 
 
