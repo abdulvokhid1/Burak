@@ -1,13 +1,8 @@
-// TASK-S
-
-function missingNumber(arr: number[]): number {
-  const n: number = arr.length;
-  const numbers: number = (n * (n + 1)) / 2;
-  const arrayNum: number = arr.reduce((num, num2) => num + num2, 0);
-  return numbers - arrayNum;
+function mergeSortedArrays(num: number[], num1: number[]): number[] {
+  return num.concat(num1).sort((a, b) => a - b);
 }
 
-console.log(missingNumber([3, 0, 1]));
+console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
 
 
