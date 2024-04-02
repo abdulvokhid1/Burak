@@ -1,3 +1,5 @@
+// Task T
+
 function mergeSortedArrays(num: number[], num1: number[]): number[] {
   return num.concat(num1).sort((a, b) => a - b);
 }
