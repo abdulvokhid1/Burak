@@ -1,10 +1,21 @@
-// Task T
+/*** U-TASK:
 
-function mergeSortedArrays(num: number[], num1: number[]): number[] {
-  return num.concat(num1).sort((a, b) => a - b);
-}
+Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha 
+bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
+MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
+ */
 
-console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+function sumOdds (num: number) {
+  let count:number = 0;
+  for(let i = 0; i < num; i++){
+    if( i % 2 !== 0){
+       count ++
+    }
+  }
+  return count
+  }
+
+ console.log(sumOdds(9))
 
 
 
