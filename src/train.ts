@@ -18,7 +18,26 @@ function sumOdds (num: number) {
  console.log(sumOdds(9))
 
 
+ /** V-TASK:
 
+Shunday function yozing, uni string parametri bolsin va stringdagi harf va u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
+MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+  */
+
+
+function countChars(input: string): { [key: string]: number } {
+  const charCount: { [key: string]: number } = {};
+
+  for (const char of input) {
+      if (charCount[char]) {
+          charCount[char]++;
+      } else {
+          charCount[char] = 1;
+      }
+  }
+  return charCount;
+}
+console.log(countChars("letter"));
 /* Project Standards:
   - Logging standards
   - Naming standards
