@@ -1,8 +1,8 @@
 import { token } from "morgan";
 import { AUTH_TIMER } from "../libs/config";
 import { Member } from "../libs/types/member";
-import jwt from "jsonwebtoken";
 import Errors, { HttpCode, Message } from "../libs/Errors";
+import jwt from "jsonwebtoken"
 
 class AuthService {
     constructor() {}
