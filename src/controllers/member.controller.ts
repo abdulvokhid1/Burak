@@ -1,7 +1,7 @@
-import { Request, Response, response } from "express";
+import { NextFunction, Request, Response, response } from "express";
 import {T} from "../libs/types/common"
 import MemberService from "../models/Member.service";
-import {Member, MemberInput,LoginInput} from '../libs/types/member'
+import {Member, MemberInput,LoginInput, ExtendedRequest} from '../libs/types/member'
 import Erros, { HttpCode, Message } from "../libs/Errors";
 import AuthService from "../models/Auth.service";
 import { token } from "morgan";
@@ -38,7 +38,7 @@ memberController.signup = async (req:Request, res:Response)=>{
     
 };
 memberController.login = async(req:Request, res:Response)=>{
-    try{
+    try{ 
         console.log("login");
         const input:LoginInput = req.body,
         result = await memberService.login(input),
@@ -58,19 +58,45 @@ memberController.login = async(req:Request, res:Response)=>{
     
 };
 
-memberController.verifyAuth = async (req: Request, res:Response) => {
-try{
-    let member = null;
-   const token = req.cookies["accessToken"];
-   if (token) member = await authService.checkAuth(token);
-   if(!member) throw new Erros(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
+memberController.logout = (req: ExtendedRequest, res:Response) =>{
+    try{
+        console.log("logout");
+        res.cookie("accessToken", null, {maxAge: 0, httpOnly: true});
+        res.status(HttpCode.OK).json({ logout: true })
+    } catch(err){
+        if( err instanceof Erros) res.status(err.code).json(err);
+        else res.status(Erros.standard.code).json(Erros.standard )
+    }
+}
 
-   res.status(HttpCode.OK).json({member:member})
+
+memberController.verifyAuth = async (req: ExtendedRequest, res:Response, next: NextFunction) => {
+try{
+   const token = req.cookies["accessToken"];
+   if (token) req.member = await authService.checkAuth(token);
+   if(!req.member)
+     throw new Erros(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
+   
+
+   next();
 
 } catch(err) {
     console.log("ERROR, verifyAuth", err)
         if( err instanceof Erros) res.status(err.code).json(err);
         else res.status(Erros.standard.code).json(Erros.standard )
 }
-}
+
+};
+
+
+memberController.retrieveAuth = async (req: ExtendedRequest, res:Response, next: NextFunction) => {
+    try{
+       const token = req.cookies["accessToken"];
+       if (token) req.member = await authService.checkAuth(token);
+    next();
+    } catch(err) {
+        console.log("ERROR, retrieveAuth", err);
+        next();
+    }
+    }
 export default memberController;
