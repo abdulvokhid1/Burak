@@ -49,6 +49,13 @@ public async login(input:LoginInput): Promise<Member> {
 };
 
 
+public async getMemberDetail(member:Member):Promise<Member> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
+    const result = await this.memberModel.findOne({ _id: memberId, memberStatus:MemberStatus.ACTIVE})
+    .exec();
+    if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+     return result
+}
 
 
 /** SSR */
