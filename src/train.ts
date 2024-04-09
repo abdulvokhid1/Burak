@@ -1,43 +1,23 @@
-/*** U-TASK:
+/* W-TASK:
 
-Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha 
-bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
-MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
- */
+Shunday function yozing, uni array va number parametrlari bolsin. Function arrayni numberda berilgan uzunlikda kesib bolaklarga ajratilgan array holatida qaytarsin
+MASALAN: chunkArray([1,2,3,4,5,6,7,8,9,10], 3) return [[1,2,3], [4,5,6], [7,8,9], [10]]
+*/
 
-function sumOdds (num: number) {
-  let count:number = 0;
-  for(let i = 0; i < num; i++){
-    if( i % 2 !== 0){
-       count ++
-    }
-  }
-  return count
+function chunkArray(arr: any[], size: number): any[][] {
+  const chunkedArray: any[][] = [];
+  let index = 0;
+
+  while (index < arr.length) {
+      chunkedArray.push(arr.slice(index, index + size));
+      index += size;
   }
 
- console.log(sumOdds(9))
-
-
- /** V-TASK:
-
-Shunday function yozing, uni string parametri bolsin va stringdagi harf va u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
-MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
-  */
-
-
-function countChars(input: string): { [key: string]: number } {
-  const charCount: { [key: string]: number } = {};
-
-  for (const char of input) {
-      if (charCount[char]) {
-          charCount[char]++;
-      } else {
-          charCount[char] = 1;
-      }
-  }
-  return charCount;
+  return chunkedArray;
 }
-console.log(countChars("letter"));
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
+
+
 /* Project Standards:
   - Logging standards
   - Naming standards
