@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, response } from "express";
+import { NextFunction, Request, Response, request, response } from "express";
 import {T} from "../libs/types/common"
 import MemberService from "../models/Member.service";
 import {Member, MemberInput,LoginInput, ExtendedRequest} from '../libs/types/member'
@@ -98,6 +98,18 @@ memberController.updateMember = async (req: ExtendedRequest, res:Response ) => {
     }
 }
 
+memberController.getTopUsers = async (req:Request, res: Response) => {
+    try{
+        console.log("getTopUsers")
+        const result = await memberService.getTopUsers();
+
+        res.status(HttpCode.OK).json(result)
+    } catch(err){
+        console.log("Error, getTopUsers:", err);
+        if( err instanceof Erros) res.status(err.code).json(err);
+        else res.status(Erros.standard.code).json(Erros.standard )
+    }
+}
 
 memberController.verifyAuth = async (req: ExtendedRequest, res:Response, next: NextFunction) => {
 try{
