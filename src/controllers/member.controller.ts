@@ -83,7 +83,20 @@ memberController.getMemberdetail = async (req: ExtendedRequest, res:Response) =>
     }
 };
 
+memberController.updateMember = async (req: ExtendedRequest, res:Response ) => {
+    try{
+        console.log("updateMember")
+        const input: MemberInput = req.body;
+        if(req.file) input.memberImage = req.file.path.replace(/\\/, "/");
+        const result = await memberService.updateMember(req.member, input);
 
+        res.status(HttpCode.OK).json(result) 
+    } catch(err){
+        console.log("Error, updateMember:", err);
+        if( err instanceof Erros) res.status(err.code).json(err);
+        else res.status(Erros.standard.code).json(Erros.standard )
+    }
+}
 
 
 memberController.verifyAuth = async (req: ExtendedRequest, res:Response, next: NextFunction) => {

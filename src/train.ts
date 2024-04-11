@@ -7,12 +7,10 @@ MASALAN: chunkArray([1,2,3,4,5,6,7,8,9,10], 3) return [[1,2,3], [4,5,6], [7,8,9]
 function chunkArray(arr: any[], size: number): any[][] {
   const chunkedArray: any[][] = [];
   let index = 0;
-
   while (index < arr.length) {
       chunkedArray.push(arr.slice(index, index + size));
       index += size;
   }
-
   return chunkedArray;
 }
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));

@@ -57,7 +57,15 @@ public async getMemberDetail(member:Member):Promise<Member> {
      return result
 }
 
-
+public async updateMember(member:Member, input:MemberInput):Promise <Member>{
+const memberId = shapeIntoMongooseObjectId(member._id);
+const result = await this.memberModel.
+findOneAndUpdate({_id :  memberId},input, {new :true})
+.exec();
+if(!result)
+    throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+return result;
+}
 /** SSR */
     public async processSignup(input:MemberInput): Promise<Member>{
          const exist = await this.memberModel
