@@ -5,6 +5,10 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import * as bcrypt from "bcryptjs"
 import { shapeIntoMongooseObjectId } from "../libs/config";
 class MemberService {
+    static addUserPoint: any;
+    static addUserPoin() {
+        throw new Error("Method not implemented.");
+    }
     private readonly memberModel;
     constructor(){
         this.memberModel = MemberModel;
@@ -90,6 +94,21 @@ public async getTopUsers(): Promise<Member[]> {
     if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
         return result;
 }
+public async addUserPoint(member: Member, point: number): Promise<Member> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
+
+    return await this.memberModel
+      .findOneAndUpdate(
+        {
+          _id: memberId,
+          memberType: MemberType.USER,
+          memberStatus: MemberStatus.ACTIVE,
+        },
+        { $inc: { memberPoints: point } },
+        { new: true }
+      )
+      .exec();
+  }
 /** SSR */
     public async processSignup(input:MemberInput): Promise<Member>{
          const exist = await this.memberModel
