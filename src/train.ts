@@ -1,25 +1,16 @@
-/*  X-TASK:
+// Task-Z
 
-Shunday function yozing, uni object va string parapetrlari bolsin. 
-Function string parametri object ichida necha marotaba takrorlanganligini qaytarsin (nested object bolsa ham sanasin)
-MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
-
-*/
-
-// Define the function
-function countOccurrences(obj: any): number {
+function sumNums(numbers: number[]): number {
   let count = 0;
-
-  for (let key in obj) {
-    if (typeof obj[key] === "string") {
-      count++;
-    } else if (typeof obj[key] === "object") {
-      count += countOccurrences(obj[key]);
+  for (let num of numbers) {
+    if (num % 2 === 0) {
+      count += num;
     }
   }
   return count;
 }
-console.log(countOccurrences({ model: "Bugatti", steer: { model: "HANKOOK", size: 30 } })); 
+
+console.log(sumNums([1, 2, 3]));
 
 
 
