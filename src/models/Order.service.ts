@@ -65,6 +65,43 @@ class OrderService {
         console.log("orderItemState:", orderItemState);
       }
 
+      public async getMyOrders(
+        member: Member,
+        inquiry: OrderInquiry
+      ): Promise<Order[]> {
+        const memberId = shapeIntoMongooseObjectId(member._id);
+        const matches = { memberId: memberId, orderStatus: inquiry.orderStatus };
+    
+        const result = await this.orderModel
+          .aggregate([
+            { $match: matches },
+            { $sort: { updatedAt: -1 } },
+            { $skip: (inquiry.page - 1) * inquiry.limit },
+            { $limit: inquiry.limit },
+            {
+              $lookup: {
+                from: "orderItems",
+                localField: "_id",
+                foreignField: "orderId",
+                as: "orderItems",
+              },
+            },
+            {
+              $lookup: {
+                from: "products",
+                localField: "orderItems.productId",
+                foreignField: "_id",
+                as: "productData",
+              },
+            },
+          ])
+          .exec();
+        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    
+        return result;
+      }
+    
+
     }
 
 export default OrderService;
