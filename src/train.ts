@@ -1,16 +1,21 @@
-// Task-Z
+/** ZA-TASK:
 
-function sumNums(numbers: number[]): number {
-  let count = 0;
-  for (let num of numbers) {
-    if (num % 2 === 0) {
-      count += num;
-    }
-  }
-  return count;
+Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
+MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}]
+ */
+
+function sortByAge(objects: { age: number }[]): { age: number }[] {
+  // Sort the array of objects by age
+  const sortedArray = objects.sort((a, b) => a.age - b.age);
+  
+  return sortedArray;
 }
 
-console.log(sumNums([1, 2, 3]));
+console.log(sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]));
+
+
+
+
 
 
 
