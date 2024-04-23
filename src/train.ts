@@ -1,26 +1,17 @@
-/** ZA-TASK:
+//ZC TASK
 
-Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
-MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}]
- */
-
-function sortByAge(objects: { age: number }[]): { age: number }[] {
-  // Sort the array of objects by age
-  const sortedArray = objects.sort((a, b) => a.age - b.age);
-  
-  return sortedArray;
+function celsiusToFahrenheit(celsius: number) {
+  return (celsius * 9) / 5 + 32;
 }
 
-console.log(sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]));
+console.log(celsiusToFahrenheit(0));
 
 
 
 
 
 
-
-
-/* Project Standards:
+/* Project Standards:s
   - Logging standards
   - Naming standards
     CAMEL case : function, method, variable 
