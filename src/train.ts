@@ -1,12 +1,13 @@
-//ZC TASK
+// Task - ZE
 
-function celsiusToFahrenheit(celsius: number) {
-  return (celsius * 9) / 5 + 32;
+function removeDuplicate(str: string): string {
+  let arr: string[] = str.split("");
+  let s = new Set<string>(arr);
+
+  return Array.from(s).join("");
 }
 
-console.log(celsiusToFahrenheit(0));
-
-
+console.log(removeDuplicate("stringg"));
 
 
 
