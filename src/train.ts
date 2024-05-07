@@ -1,16 +1,16 @@
-// Task - ZE
+// TASK - ZH
 
-function removeDuplicate(str: string): string {
-  let arr: string[] = str.split("");
-  let s = new Set<string>(arr);
-
-  return Array.from(s).join("");
+function findDisappearedNumbers(arr: number[]) {
+  const num = arr[arr.length - 1];
+  const result = [];
+  for (let i = 1; i <= num; i++) {
+    if (!arr.includes(i)) {
+      result.push(i);
+    }
+  }
+  return result;
 }
-
-console.log(removeDuplicate("stringg"));
-
-
-
+console.log(findDisappearedNumbers([1, 3, 4, 7]));
 
 /* Project Standards:s
   - Logging standards
