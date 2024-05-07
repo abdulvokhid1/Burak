@@ -1,16 +1,17 @@
-// TASK - ZH
+/*ZI-TASK:
+ 
+Shunday function yozing, u function ishga tushgandan 3 soniyadan keyin "Hello World" ni qaytarsin.
+MASALAN: delayHelloWorld("Hello World") return "Hello World"
+*/
 
-function findDisappearedNumbers(arr: number[]) {
-  const num = arr[arr.length - 1];
-  const result = [];
-  for (let i = 1; i <= num; i++) {
-    if (!arr.includes(i)) {
-      result.push(i);
-    }
-  }
-  return result;
+function delayHelloWorld(str: string): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(str);
+    }, 3000);
+  });
 }
-console.log(findDisappearedNumbers([1, 3, 4, 7]));
+delayHelloWorld("Hello World").then((data) => console.log(data));
 
 /* Project Standards:s
   - Logging standards
