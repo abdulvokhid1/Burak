@@ -4,10 +4,10 @@ Shunday function yozing, u function ishga tushgandan 3 soniyadan keyin "Hello Wo
 MASALAN: delayHelloWorld("Hello World") return "Hello World"
 */
 
-function delayHelloWorld(str: string): Promise<string> {
+function delayHelloWorld(word: string): Promise<string> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(str);
+      resolve(word);
     }, 3000);
   });
 }
